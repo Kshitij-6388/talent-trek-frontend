@@ -29,7 +29,7 @@ const InterviewQuestionsPage = () => {
       setLoading(true);
 
       // Call backend API to generate questions
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/generate-interview-questions`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/generate-interview-questions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
