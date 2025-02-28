@@ -10,7 +10,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">Your Next Career Move Starts Here</h1>
           <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-xl mx-auto lg:mx-0">
             TalentTrek helps job seekers find the right opportunities and empowers recruiters to connect with top talent.
-            Get AI-powered resume feedback and apply with confidence.
+            
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
             <a
