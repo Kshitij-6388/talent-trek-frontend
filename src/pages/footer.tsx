@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-bold text-white">TalentTrek</span>
             </div>
             <p className="text-neutral-400 mb-6">
-              Your Career Compass. TalentTrek connects job seekers with opportunities and employers with talent through our AI-powered platform.
+              Your Career Compass. TalentTrek connects job seekers with opportunities and employers with talent.
             </p>
             <div className="flex space-x-4">
               {socialIcons.map((social) => (

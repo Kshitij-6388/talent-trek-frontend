@@ -1,18 +1,28 @@
 import { Outlet, useLocation } from "react-router-dom"
 import {
-  Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
 import { useState } from "react"
+import supabase from "@/lib/supabase"
+
 
 export default function StudentLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
+
+  // Logout function
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) throw error
+      // Redirect to login page or home page after logout
+      window.location.href = '/signin' // Adjust the redirect URL as needed
+    } catch (error) {
+      console.error('Error while logging out')
+    }
+  }
 
   // Define navigation items
   const navItems = [
@@ -55,7 +65,7 @@ export default function StudentLayout() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-4">
+          <nav className="hidden md:flex space-x-4 items-center">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -65,6 +75,12 @@ export default function StudentLayout() {
                 {item.name}
               </a>
             ))}
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 rounded hover:bg-red-600 transition-colors duration-300"
+            >
+              Logout
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -128,6 +144,12 @@ export default function StudentLayout() {
                   {item.name}
                 </a>
               ))}
+              <button
+                onClick={handleLogout}
+                className="block py-2 px-4 text-left hover:bg-red-600 rounded transition-colors duration-300"
+              >
+                Logout
+              </button>
             </nav>
           </div>
         </div>
@@ -135,7 +157,6 @@ export default function StudentLayout() {
 
       {/* Main Content */}
       <main className="flex-1 pt-16">
-
         {/* Page Content */}
         <div className="container mx-auto p-4">
           <Outlet />
